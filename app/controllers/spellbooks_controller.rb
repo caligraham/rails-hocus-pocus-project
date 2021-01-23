@@ -10,7 +10,6 @@ class SpellbooksController < ApplicationController
 
     def new
         @spellbook = Spellbook.new
-        3.times { @spellbbook.spells.build } #has_many
     end
 
     def create
