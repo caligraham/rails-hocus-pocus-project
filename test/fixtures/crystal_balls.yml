@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type: 
+  sorcery_score: 1
+  size: MyString
+  user: one
+
+two:
+  type: 
+  sorcery_score: 1
+  size: MyString
+  user: two

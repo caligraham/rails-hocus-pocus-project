@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :crystal_balls
   resources :spells
   resources :spellbooks
   resources :users
