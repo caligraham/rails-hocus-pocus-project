@@ -15,7 +15,7 @@ class SpellbooksController < ApplicationController
     def create
         @spellbook = Spellbook.new(spellbook_params)
         if @spellbook.save 
-            redirect_to spellbook_path(spellbook)
+            redirect_to spellbook_path(@spellbook)
         else
             render :new
         end   
