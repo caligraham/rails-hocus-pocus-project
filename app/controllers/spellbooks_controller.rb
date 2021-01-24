@@ -18,6 +18,21 @@ class SpellbooksController < ApplicationController
             redirect_to spellbook_path(spellbook)
         else
             render :new
+        end   
+    end
+
+
+    def edit
+        @spellbook = Spellbook.find(params[:id])
+    end
+
+    def update
+        @spellbook = Spellbook.find(params[:id])
+        @spellbook.update(spellbook_params)
+        if @spellbook.valid?
+            redirect_to spellbooks_path
+        else
+            render :edit
         end
     end
 
