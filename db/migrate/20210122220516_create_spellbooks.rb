@@ -5,7 +5,6 @@ class CreateSpellbooks < ActiveRecord::Migration[6.1]
       t.string :category
       t.integer :level
       t.integer :user_id
-      t.integer :spell_id
 
       t.timestamps
     end
