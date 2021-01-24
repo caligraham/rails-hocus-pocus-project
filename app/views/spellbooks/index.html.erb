@@ -1,0 +1,6 @@
+<h1> All Spellbooks:</h1>
+<ul>
+<% @spellbooks.each do |spellbook| %>
+<li> <%= link_to spellbook.title, spellbook_path(spellbook)%> </li>
+<% end %>
+</ul
