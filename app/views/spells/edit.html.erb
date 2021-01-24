@@ -1,6 +1,6 @@
-<h1>Create Spell</h1>
+<h1>Edit Spell</h1>
 
-    <%= form_for @spell do |f| %>
+<%= form_for @spell do |f| %>
     <%= f.label :name %>
     <%= f.text_field :name %>
     <br>
@@ -12,5 +12,5 @@
     <br>
     <%= f.label :level %>
     <%= f.number_field :level %>
-    <%= f.submit "Publish Spell" %>
+    <%= f.submit "Update Spell" %>
     <% end %>
