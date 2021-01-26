@@ -19,7 +19,8 @@
   <a class="brand-logo"> Wizards n Witches</a>
   <ul id="nav-mobile" class="right hide-on-med-and-down">
     <% if !logged_in? %>
-    <li><%= link_to 'sign-up', "users/new"%></li>
+    <li><%= link_to 'sign-up', "/signup"%></li>
+    <li><%= button_to "Log in with Google", "/auth/google_oauth2" %></li>
     <% else %>
     <li><%= link_to 'spells', spells_path%></li>
     <li><%= link_to 'spellbooks', spellbooks_path%></li>
