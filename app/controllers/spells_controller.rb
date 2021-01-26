@@ -1,6 +1,6 @@
 class SpellsController < ApplicationController
     before_action :redirect_if_not_logged_in
-    
+
     def index
         if params[:spellbook_id] && @spellbook = Spellbook.find(params[:spellbook_id])
             @spells = @spellbook.spells
@@ -56,6 +56,6 @@ class SpellsController < ApplicationController
     
     private
     def spell_params
-        params.require(:spell).permit(:name, :level, :description,  spellbook_attributes: [:title, :category, :level])
+        params.require(:spell).permit(:name, :level, :description, :spellbook_id, spellbook_attributes: [:title, :category, :level])
     end
 end
