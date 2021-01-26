@@ -1,0 +1,10 @@
+<%= form_for ([@spellbook, @spell]) do |f| %>
+    <%= s.label "Name" %>
+    <%= s.text_field :name %> <br><br>
+    <%= s.label "Level" %> <br><br>
+    <%= s.number_field :level %>
+    <%= s.label "Description" %> <br><br>
+    <%= s.text_area :description %>
+    <%= spellbook_form_fields(f) %>
+    <%= f.submit %>
+<% end %>
