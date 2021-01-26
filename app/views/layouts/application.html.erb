@@ -22,6 +22,7 @@
     <li><%= link_to 'sign-up', "/signup"%></li>
     <li><%= button_to "Log in with Google", "/auth/google_oauth2" %></li>
     <% else %>
+    <li><%= link_to 'browse users', users_path %></li>
     <li><%= link_to 'spells', spells_path%></li>
     <li><%= link_to 'spellbooks', spellbooks_path%></li>
     <li><%= link_to 'logout', logout_path, method: 'delete' %></li>
