@@ -42,7 +42,7 @@ class SpellbooksController < ApplicationController
     private
 
     def spellbook_params
-        params.require(:spellbook).permit(:title, :category, :level, spells_attributes: [:name, :description, :level, :category])
+        params.require(:spellbook).permit(:title, :category, :level, :user_id, spells_attributes: [:name, :description, :level, :category,])
     end
 
 end

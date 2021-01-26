@@ -13,7 +13,10 @@ Rails.application.routes.draw do
   
   resources :crystal_balls
   resources :spells
-  resources :spellbooks
+  resources :spellbooks do
+    resources :spells
+  end
+
  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
