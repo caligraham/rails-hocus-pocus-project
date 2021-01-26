@@ -30,6 +30,12 @@ class UsersController < ApplicationController
     def update
     end
 
+    def destroy
+        @user = User.find(params[:id])
+        @user.destroy
+        redirect_to '/login'
+    end
+
 
 
     private
