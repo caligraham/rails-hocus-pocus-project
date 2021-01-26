@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_24_002211) do
+ActiveRecord::Schema.define(version: 2021_01_25_212544) do
 
   create_table "crystal_balls", force: :cascade do |t|
     t.string "type"
@@ -33,7 +33,6 @@ ActiveRecord::Schema.define(version: 2021_01_24_002211) do
 
   create_table "spells", force: :cascade do |t|
     t.string "name"
-    t.string "category"
     t.integer "level"
     t.integer "user_id"
     t.integer "spellbook_id"
@@ -50,6 +49,8 @@ ActiveRecord::Schema.define(version: 2021_01_24_002211) do
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "uid"
+    t.string "provider"
   end
 
   add_foreign_key "crystal_balls", "users"
