@@ -14,11 +14,12 @@ class SessionsController < ApplicationController
 
     def create 
         #if the user logs in directly from app
-        u = User.find_by_email(params[:user][:email])
+        u = User.find_by_username(params[:user][:username])
         if u && u.authenticate(params[:user][:password])
             session[:user_id] = u.id
             redirect_to user_path(u)
         else
+            flash[:message] = "Your credentials are invalid! Please try again."
             redirect_to '/login'
         end
     end
@@ -36,6 +37,7 @@ class SessionsController < ApplicationController
             session[:user_id] = user.id   #log them in
             redirect_to user_path(user)
         else
+            flash[:message] = "Oopsie! Something's wrong!"
             redirect_to login_path
         end
        
