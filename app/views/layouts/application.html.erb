@@ -16,15 +16,15 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <nav>
 <div class="nav-wrapper" style="color:#fff;background:#484f4f">
-  <a class="brand-logo"> Wizards n Witches</a>
+  <a href='/spellbooks' class="brand-logo"> Wizards n Witches</a>
   <ul id="nav-mobile" class="right hide-on-med-and-down">
     <% if !logged_in? %>
     <li><%= link_to 'sign-up', "/signup"%></li>
     <li><%= button_to "Log in with Google", "/auth/google_oauth2" %></li>
     <% else %>
     <li><%= link_to 'browse users', users_path %></li>
-    <li><%= link_to 'spells', spells_path%></li>
     <li><%= link_to 'spellbooks', spellbooks_path%></li>
+    <li><%= link_to 'spells', spells_path%></li>
     <li><%= link_to 'logout', logout_path, method: 'delete' %></li>
     <% end %>
   </ul>

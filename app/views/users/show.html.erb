@@ -3,4 +3,5 @@
   <img src="<%= @user.profile_pic %>">
   <br><br>
   <%= @user.bio %>
-
+<br>
+<%= link_to "delete", user_path(@user), method: 'DELETE' %> 
