@@ -1,13 +1,16 @@
 <h1>Create Spellbook</h1>
 
     <%= form_for @spellbook do |f| %>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-    <br>
-    <%= f.label :category %>
-    <%= f.text_field :category %>
-    <br>
-    <%= f.label :level %>
-    <%= f.number_field :level %>
-    <%= f.submit "Generate your spellbook" %>
+        <%= render partial: "form", locals: { in_the_partial: f } %>
+        <h3>And add 2 Spells:</h3>
+        <%= f.fields_for :spells do |s| %>
+        <%= s.label "Name" %>
+        <%= s.text_field :name %> <br><br>
+        <%= s.label "Level" %> <br><br>
+        <%= s.number_field :level %>
+        <%= s.label "Description" %> <br><br>
+        <%= s.text_area :description %>
+
+
+    <%= f.submit "Generate your Spellbook & Spells" %>
     <% end %>

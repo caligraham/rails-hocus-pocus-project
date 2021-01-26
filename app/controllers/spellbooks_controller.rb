@@ -10,6 +10,7 @@ class SpellbooksController < ApplicationController
 
     def new
         @spellbook = Spellbook.new
+        2.times { @spellbook.spells.build }
     end
 
     def create

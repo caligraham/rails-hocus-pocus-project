@@ -1,13 +1,6 @@
 <h1>Edit Spellbook</h1>
 
     <%= form_for @spellbook do |f| %>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-    <br>
-    <%= f.label :category %>
-    <%= f.text_field :category %>
-    <br>
-    <%= f.label :level %>
-    <%= f.number_field :level %>
+        <%= render partial: "form", locals: {in_the_partial: f }%>
     <%= f.submit "Update your spellbook" %>
     <% end %>

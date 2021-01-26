@@ -4,3 +4,7 @@ Title: <%= @spellbook.title %>
 Category: <%= @spellbook.category %>
 Level: <%= @spellbook.level %>
 
+<h2>All Spells within this Spellbook</h2>
+
+<%= render @spellbook.spells %>
+
