@@ -1,3 +1,5 @@
+<%= render partial: "layouts/error", locals: {object: @spell} %>
+
 <%= form_for ([@spellbook, @spell]) do |f| %>
     <%= s.label "Name" %>
     <%= s.text_field :name %> <br><br>

@@ -1,5 +1,7 @@
 <h1>Create Spellbook</h1>
 
+    <%= render partial: "layouts/error", locals: {object: @spellbook} %>
+
     <%= form_for @spellbook do |f| %>
         <%= render partial: "form", locals: { in_the_partial: f } %>
         <h3>And add 2 Spells:</h3>

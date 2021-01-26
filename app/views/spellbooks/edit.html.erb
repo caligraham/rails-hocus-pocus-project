@@ -1,5 +1,16 @@
 <h1>Edit Spellbook</h1>
 
+    <% if @spellbook.errors.any? %>
+    <div id="error explanation">
+        <h2><%= pluralize(@spellbook.errors.count, "error") %> prevented this Spellbook from being saved: </h2>
+        <ul>
+        <% @spellbook.errors.full_messages.each do |error| %>
+        <li> <%= error %></li>
+        <% end %>
+        </ul>
+    </div>
+    <% end %>
+
     <%= form_for @spellbook do |f| %>
         <%= render partial: "form", locals: {in_the_partial: f }%>
     <%= f.submit "Update your spellbook" %>
