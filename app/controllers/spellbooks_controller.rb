@@ -7,7 +7,7 @@ class SpellbooksController < ApplicationController
     end
 
     def show
-        @spellbook = Spellbook.find(params[:id])
+        find_spellbook
     end
 
     def new
@@ -26,11 +26,11 @@ class SpellbooksController < ApplicationController
 
 
     def edit
-        @spellbook = Spellbook.find(params[:id])
+        find_spellbook
     end
 
     def update
-        @spellbook = Spellbook.find(params[:id])
+        find_spellbook
         @spellbook.update(spellbook_params)
         if @spellbook.valid?
             redirect_to spellbooks_path
@@ -40,6 +40,9 @@ class SpellbooksController < ApplicationController
     end
 
     private
+
+    
+
 
     def spellbook_params
         params.require(:spellbook).permit(:title, :category, :level, :user_id, spells_attributes: [:name, :description, :level, :category,])
