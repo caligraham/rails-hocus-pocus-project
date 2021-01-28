@@ -1,0 +1,6 @@
+<h3> Select a Spellbook: </h3>
+<%= f.collection_select :book_id, Spellbook.all, :id, :title %>
+<h3>Or create a new book: </h3>
+<%= f.fields_for :spellbook do |b| %>
+    <%= render partial: "spellbooks/form", locals: { in_the_partial: b } %>
+<% end %>
