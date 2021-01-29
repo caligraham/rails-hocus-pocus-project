@@ -5,4 +5,6 @@ class User < ApplicationRecord
     has_many :spells, through: :spellbooks
     has_one :crystal_ball
 
+    validates :username, :email, presence: true, uniqueness: true
+    
 end
