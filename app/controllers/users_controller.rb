@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+    before_action :redirect_if_logged_in, except: [:show]
+
     def new
         @user = User.new
     end
