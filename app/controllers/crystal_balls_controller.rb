@@ -1,2 +1,5 @@
 class CrystalBallsController < ApplicationController
+
+   
+
 end
