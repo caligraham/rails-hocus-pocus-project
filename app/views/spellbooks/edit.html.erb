@@ -1,9 +1,16 @@
-<h1>Edit Spellbook</h1>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container" style= "text-align:center">
+<h1 style="color: #2E1114; text-align:center">Edit Spellbook</h1>
 
     <% if @spellbook.errors.any? %>
-    <div id="error explanation">
-        <h2><%= pluralize(@spellbook.errors.count, "error") %> prevented this Spellbook from being saved: </h2>
-        <ul>
+    <div style="list-style-type:none; color: #2E1114; text-align:center" id="error explanation">
+        <h2 style="list-style-type:none; color: #2E1114; text-align:center"><%= pluralize(@spellbook.errors.count, "error") %> prevented this Spellbook from being saved: </h2>
+        <ul style="list-style-type:none; color: #2E1114; text-align:center">
         <% @spellbook.errors.full_messages.each do |error| %>
         <li> <%= error %></li>
         <% end %>
@@ -12,9 +19,10 @@
     <% end %>
 
     <%= form_for @spellbook do |f| %>
-        <%= render partial: "form", locals: {in_the_partial: f }%>
+        <%= render partial: "form", locals: {partial_form: f }%>
     <%= f.submit "Update your spellbook" %>
     <% end %>
+</div>
 
     <style>
 body {
@@ -23,5 +31,10 @@ body {
   -moz-background-size: cover;
   background-size: cover;
   -o-background-size: cover;
+}
+.container { 
+background-color: rgba(100%, 100%, 100%, .3);
+border: 2px #83677B;
+border-radius: 100px; 
 }
 </style>

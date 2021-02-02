@@ -1,12 +1,18 @@
-<h1> All Spellbooks:</h1>
-<ul>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+<h1 style="color: #2E1114; text-align:center"> All Spellbooks:</h1>
+<ul style="list-style-type:none; color: #2E1114; text-align:center">
 <% @spellbooks.each do |spellbook| %>
 <li> <%= link_to spellbook.title, spellbook_path(spellbook)%> </li>
 <% end %>
 </ul>
 
 <br><br>
-<hr>
+</div>
 
 <style>
 body {
@@ -16,4 +22,10 @@ body {
   background-size: cover;
   -o-background-size: cover;
 }
+.container { 
+background-color: rgba(100%, 100%, 100%, .5);
+border: 2px #83677B;
+border-radius: 100px; 
+}
+
 </style>
