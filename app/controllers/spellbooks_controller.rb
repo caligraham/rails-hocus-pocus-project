@@ -16,6 +16,7 @@ class SpellbooksController < ApplicationController
     end
 
     def create
+        params[:spellbook][:user_id] = current_user.id
         @spellbook = Spellbook.new(spellbook_params)
         if @spellbook.save 
             redirect_to spellbook_path(@spellbook)

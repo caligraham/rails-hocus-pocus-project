@@ -12,4 +12,8 @@ class Spell < ApplicationRecord
     validates :name, :description, presence: true
     validates :level, presence: true, numericality: {greater_than: 0, less_than_or_equal_to: 10}
 
+    def self.newest_spells
+        Spell.order(created_at: :desc).limit(5)
+    end
+
 end

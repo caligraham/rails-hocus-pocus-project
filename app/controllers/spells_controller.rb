@@ -25,8 +25,9 @@ class SpellsController < ApplicationController
 
     def create
         @spell = Spell.new(spell_params)
-        if params[:book_id]
+        if params[:spellbook_id]
             @spellbook = Spellbook.find(params[:spellbook_id])
+
         end
         if @spell.save
             redirect_to spells_path
@@ -57,6 +58,6 @@ class SpellsController < ApplicationController
     
     private
     def spell_params
-        params.require(:spell).permit(:name, :level, :description, :spellbook_id, spellbook_attributes: [:title, :category, :level])
+        params.require(:spell).permit(:name, :level, :description, :spellbook_id, spellbook_attributes: [:title, :category, :level, :user_id])
     end
 end
