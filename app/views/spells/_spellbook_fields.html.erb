@@ -1,6 +1,19 @@
-<h3> Select a Spellbook: </h3>
-<%= f.collection_select :book_id, Spellbook.all, :id, :title %>
-<h3>Or create a new book: </h3>
-<%= f.fields_for :spellbook do |b| %>
-    <%= render partial: "spellbooks/form", locals: { in_the_partial: b } %>
-<% end %>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div style="container" style="color: #501B1D; text-align:center">
+    <h3 style="color: #501B1D; text-align:center"> Select a Spellbook: </h3>
+        <div style="color: #501B1D; text-align:center">
+        <%= f.collection_select :spellbook_id, Spellbook.all, :id, :title, include_blank: "Select Spellbook" %>
+        </div>
+    <h3 style="color: #501B1D; text-align:center">Or create a new book: </h3>
+    <div style="color: #501B1D; text-align:center">
+    <%= f.fields_for :spellbook do |b| %>
+        <%= render partial: "spellbooks/form", locals: { partial_form: b } %>
+    <% end %>
+    </div>
+
+</div>

@@ -1,9 +1,17 @@
-<h1>Create Spellbook</h1>
-
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+<h1 style="color: #501B1D; text-align:center">Create Spellbook</h1>
+    <div style="color: #501B1D; text-align:center">
     <%= render partial: "layouts/error", locals: {object: @spellbook} %>
 
     <%= form_for @spellbook do |f| %>
-        <%= render partial: "form", locals: { in_the_partial: f } %>
+        <%= render partial: "form", locals: { partial_form: f } %>
         <h3>And add 2 Spells:</h3>
         <%= f.fields_for :spells do |s| %>
         <%= s.label "Name" %><br><br>
@@ -12,10 +20,13 @@
         <%= s.number_field :level %><br><br>
         <%= s.label "Description" %> <br><br>
         <%= s.text_area :description %><br><br>
+        <%= s.hidden_field :user_id, value:current_user.id %>
     <% end %>
 
     <%= f.submit "Generate your Spellbook & Spells" %>
     <% end %>
+    </div>
+    </div>
 
     <style>
 body {
@@ -24,5 +35,10 @@ body {
   -moz-background-size: cover;
   background-size: cover;
   -o-background-size: cover;
+}
+.container { 
+background-color: rgba(100%, 100%, 100%, .4);
+border: 2px #83677B;
+border-radius: 100px; 
 }
 </style>

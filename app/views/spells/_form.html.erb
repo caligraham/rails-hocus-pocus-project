@@ -1,12 +1,13 @@
 <%= render partial: "layouts/error", locals: {object: @spell} %>
 
 <%= form_for ([@spellbook, @spell]) do |f| %>
-    <%= s.label "Name" %>
-    <%= s.text_field :name %> <br><br>
-    <%= s.label "Level" %> <br><br>
-    <%= s.number_field :level %>
-    <%= s.label "Description" %> <br><br>
-    <%= s.text_area :description %>
-    <%= spellbook_form_fields(f) %>
+    <%= f.label "Name" %>
+    <%= f.text_field :name %> <br>
+    <%= f.label "Level" %> 
+    <%= f.number_field :level %> <br>
+    <%= f.label "Description" %> 
+    <%= f.text_area :description %> <br>
+    <%= render partial: "spells/spellbook_fields", locals: { f: f} %>
     <%= f.submit %>
 <% end %>
+
