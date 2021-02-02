@@ -1,17 +1,11 @@
-<h1>Create Spell</h1>
-
-    <%= form_for @spell do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-    <br>
-    <%= f.label :description %>
-    <%= f.text_area :description %>
-    <br>
-    <%= f.label :level %>
-    <%= f.number_field :level %>
-    <%= f.submit "Publish Spell" %>
-    <% end %>
-
+<br>
+<br>
+<br>
+<br>
+<div class="container" style="text-align:center">
+<h1 style="color: #501B1D; text-align:center">Create A Spell</h1>
+<%= render partial: "form" %>
+</div>
    
     <style>
 body {
@@ -20,5 +14,10 @@ body {
   -moz-background-size: cover;
   background-size: cover;
   -o-background-size: cover;
+}
+.container { 
+background-color: rgba(100%, 100%, 100%, .3);
+border: 2px #83677B;
+border-radius: 100px; 
 }
 </style>

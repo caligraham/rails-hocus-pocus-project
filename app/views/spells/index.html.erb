@@ -1,8 +1,17 @@
-<h1>All Spells</h1>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+<h1 style="color: #501B1D; text-align:center">All Spells</h1>
 
 <% @spells.each do |spell| %>
-<li> <%= link_to spell.name, spell_path(spell) %></li>
+<li style="color: #501B1D; text-align:center"> <%= link_to spell.name, spell_path(spell) %></li>
 <% end %>
+
+</div>
 
   <style>
 body {
@@ -11,5 +20,11 @@ body {
   -moz-background-size: cover;
   background-size: cover;
   -o-background-size: cover;
+}
+
+.container { 
+background-color: rgba(100%, 100%, 100%, .3);
+border: 2px #83677B;
+border-radius: 100px; 
 }
 </style>

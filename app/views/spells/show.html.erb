@@ -1,11 +1,22 @@
-<h1>Spell Info: </h1>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+<h1 style="color: #501B1D; text-align:center">Spell Info: </h1>
 
-Name: <%= @spell.name %> <br>
-Description: <%= @spell.description %> <br>
-Level: <%= @spell.level %> <br>
-
-
-<%= link_to "delete", spell_path(@spell), method: 'DELETE' %>
+      <div style="color: #501B1D; text-align:center">
+      Name: <%= @spell.name %> <br>
+      Description: <%= @spell.description %> <br>
+      Level: <%= @spell.level %> <br>
+      </div>
+        <div style="color: #501B1D; text-align:center">
+          <%= link_to "delete", spell_path(@spell), method: 'DELETE' %>
+        </div>
+</div>
 
 <style>
 body {
@@ -15,4 +26,10 @@ body {
   background-size: cover;
   -o-background-size: cover;
 }
+.container { 
+background-color: rgba(100%, 100%, 100%, .4);
+border: 2px #83677B;
+border-radius: 100px; 
+}
+
 </style>
