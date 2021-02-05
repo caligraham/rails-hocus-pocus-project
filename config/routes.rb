@@ -11,11 +11,17 @@ Rails.application.routes.draw do
   post '/signup', to: 'users#create'
   resources :users
   
+  get '/spells/recent_spells' => 'spells#recent_spells'
+
   resources :crystal_balls
   resources :spells
   resources :spellbooks do
     resources :spells
   end
+
+  match '*path' => 'application_controller#fallback', via: [:all]
+
+  
 
  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
