@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-    before_action :redirect_if_logged_in, except: [:show]
+    #before_action :redirect_if_logged_in, except: [:show]
 
     def new
         @user = User.new
@@ -26,10 +26,18 @@ class UsersController < ApplicationController
 
     def edit
         @user = User.find(params[:id])
-        render :edit
+        if current_user != @user
+            redirect_to user_path
+        end
     end
 
     def update
+        @user = User.find_by_id(params[:id])
+        if @user.update(params.require(:user).permit(:username, :profile_pic, :bio))
+            redirect_to user_path(@user)
+            else
+            render :edit
+        end
     end
 
     def destroy
