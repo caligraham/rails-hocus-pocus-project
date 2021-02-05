@@ -25,15 +25,13 @@ class SpellsController < ApplicationController
             @spell = Spell.new(spellbook_id: params[:spellbook_id])
         else
             @spell = Spell.new
-            @spell.build_spellbook
         end
     end
 
     def create
-        @spell = Spell.new(spell_params)
+        @spell = current_user.spells.build(spell_params)
         if params[:spellbook_id]
             @spellbook = Spellbook.find(params[:spellbook_id])
-
         end
         if @spell.save
             redirect_to spells_path
@@ -49,7 +47,7 @@ class SpellsController < ApplicationController
     def update
         find_spell
         @spell.update(spell_params)
-        if @spell.valid? && authorized_to_edit
+        if @spell.valid? && authorized_to_edit?
             redirect_to spells_path
         else
             render :edit
@@ -68,6 +66,6 @@ class SpellsController < ApplicationController
     
     private
     def spell_params
-        params.require(:spell).permit(:name, :level, :description, :spellbook_id, spellbook_attributes: [:title, :category, :level, :user_id])
+        params.require(:spell).permit(:name, :level, :description, :spellbook_id, spellbook_attributes: [:user_id, :title, :category, :level])
     end
 end

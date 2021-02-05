@@ -7,7 +7,7 @@
     <%= f.number_field :level %> <br>
     <%= f.label "Description" %> 
     <%= f.text_area :description %> <br>
-    <%= render partial: "spells/spellbook_fields", locals: { f: f} %>
+    <%= render partial: "spells/spellbook_fields", locals: { f: f, spell: @spell} %>
     <%= f.submit %>
 <% end %>
 

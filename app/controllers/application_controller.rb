@@ -5,11 +5,13 @@ class ApplicationController < ActionController::Base
         redirect_to user_path
     end
 
+    def authorized_to_edit?
+        @spell.user == current_user
+      end
+
     private
 
-    def authorized_to_edit?
-        @spell.users == current_user
-      end
+    
 
     def redirect_if_not_logged_in
         redirect_to '/login' if !logged_in?
