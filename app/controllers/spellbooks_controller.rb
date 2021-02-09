@@ -40,6 +40,16 @@ class SpellbooksController < ApplicationController
         end
     end
 
+    def destroy
+        find_spellbook
+        if current_user.id != @spellbook.user_id
+            redirect_to spellbooks_path
+        else 
+            @spellbook.destroy 
+            redirect_to spellbooks_path
+        end
+    end
+
     private
 
     
@@ -47,6 +57,10 @@ class SpellbooksController < ApplicationController
 
     def spellbook_params
         params.require(:spellbook).permit(:title, :category, :level, :user_id, spells_attributes: [:name, :description, :level, :category,])
+    end
+
+    def find_spellbook
+        @spellbook = Spellbook.find(params[:id])
     end
 
 end

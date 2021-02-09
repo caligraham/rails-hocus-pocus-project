@@ -4,7 +4,7 @@
 
 <div style="color: #501B1D; text-align:center">
 
-<%= form_for @spell do |f| %>
+<%= form_for ([@spellbook, @spell]) do |f| %>
     <%= f.label "Name" %>
     <%= f.text_field :name %> <br>
     <%= f.label "Level" %> 

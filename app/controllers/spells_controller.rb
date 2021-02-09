@@ -1,6 +1,8 @@
 class SpellsController < ApplicationController
     
-    before_action :redirect_if_not_logged_in, :current_user, only: [:edit, :update, :destroy]
+    before_action :redirect_if_not_logged_in
+    #before_action :current_user, only: [:edit, :update, :destroy]
+    #before_action :redirect_if_not_spellbook_owner, only: [:destroy, :edit, :update]
 
     def index
         if params[:spellbook_id] && @spellbook = Spellbook.find(params[:spellbook_id])
@@ -25,6 +27,7 @@ class SpellsController < ApplicationController
             @spell = Spell.new(spellbook_id: params[:spellbook_id])
         else
             @spell = Spell.new
+            @spell.build_spellbook
         end
     end
 
@@ -40,6 +43,7 @@ class SpellsController < ApplicationController
         end
     end
 
+
     def edit
         find_spell
     end
@@ -47,7 +51,7 @@ class SpellsController < ApplicationController
     def update
         find_spell
         @spell.update(spell_params)
-        if @spell.valid? && authorized_to_edit?
+        if @spell.valid? 
             redirect_to spells_path
         else
             render :edit
@@ -67,5 +71,20 @@ class SpellsController < ApplicationController
     private
     def spell_params
         params.require(:spell).permit(:name, :level, :description, :spellbook_id, spellbook_attributes: [:user_id, :title, :category, :level])
+    end
+
+    def redirect_if_not_spellbook_owner
+        find_spell
+        find_spellbook
+        return redirect_to spells_path unless @spellbook
+        redirect_to spells_path unless current_user.id == @spellbook.user_id
+    end
+
+    def find_spellbook
+        @spellbook = Spellbook.find_by_id(params[:id])
+    end
+
+    def find_spell
+        @spell = Spell.find_by_id(params[:id])
     end
 end
