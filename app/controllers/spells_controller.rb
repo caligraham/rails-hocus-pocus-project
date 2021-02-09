@@ -1,6 +1,6 @@
 class SpellsController < ApplicationController
     
-    before_action :redirect_if_not_logged_in
+    before_action :redirect_if_not_logged_in, :current_user, only: [:edit, :update, :destroy]
 
     def index
         if params[:spellbook_id] && @spellbook = Spellbook.find(params[:spellbook_id])

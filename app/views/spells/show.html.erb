@@ -14,6 +14,7 @@
       Level: <%= @spell.level %> <br>
       </div>
         <div style="color: #501B1D; text-align:center">
+        <%= link_to "edit", edit_spellbook_spell_path(@spell.spellbook, @spell) %>
           <%= link_to "delete", spell_path(@spell), method: 'DELETE' %>
         </div>
 </div>

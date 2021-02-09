@@ -1,6 +1,21 @@
-<h1>Edit Spell</h1>
 
-<%= render partial: "form" %>
+<div class="container">
+<h1 style="color: #501B1D; text-align:center">Edit Spell</h1>
+
+<div style="color: #501B1D; text-align:center">
+
+<%= form_for @spell do |f| %>
+    <%= f.label "Name" %>
+    <%= f.text_field :name %> <br>
+    <%= f.label "Level" %> 
+    <%= f.number_field :level %> <br>
+    <%= f.label "Description" %> 
+    <%= f.text_area :description %> <br>
+  
+    <%= f.submit %>
+<% end %>
+</div>
+</div>
 
  <style>
 body {
@@ -9,5 +24,10 @@ body {
   -moz-background-size: cover;
   background-size: cover;
   -o-background-size: cover;
+}
+.container { 
+background-color: rgba(100%, 100%, 100%, .4);
+border: 2px #83677B;
+border-radius: 100px; 
 }
 </style>

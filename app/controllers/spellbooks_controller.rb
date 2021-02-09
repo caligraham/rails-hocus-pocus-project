@@ -1,6 +1,6 @@
 class SpellbooksController < ApplicationController
  
-    before_action :redirect_if_not_logged_in
+    before_action :redirect_if_not_logged_in, :current_user
     
     def index
         @spellbooks = Spellbook.all 
