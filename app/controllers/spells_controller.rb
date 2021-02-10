@@ -14,6 +14,7 @@ class SpellsController < ApplicationController
 
     def show
         find_spell
+        find_spellbook
     end
 
     def recent_spells
@@ -23,21 +24,16 @@ class SpellsController < ApplicationController
 
 
     def new
-        if params[:spellbook_id] && @spellbook = Spellbook.find(params[:spellbook_id])
-            @spell = Spell.new(spellbook_id: params[:spellbook_id])
-        else
-            @spell = Spell.new
-            @spell.build_spellbook
-        end
+        @spellbook = Spellbook.find(params[:spellbook_id])
+        @spell = @spellbook.spells.build
+        
     end
 
     def create
         @spell = current_user.spells.build(spell_params)
-        if params[:spellbook_id]
-            @spellbook = Spellbook.find(params[:spellbook_id])
-        end
+        @spell.spellbook_id = params[:spellbook_id]
         if @spell.save
-            redirect_to spells_path
+            redirect_to spellbook_spell_path(params[:spellbook_id],@spell)
         else
             render :new
         end
@@ -46,13 +42,14 @@ class SpellsController < ApplicationController
 
     def edit
         find_spell
+        find_spellbook
     end
 
     def update
         find_spell
         @spell.update(spell_params)
         if @spell.valid? 
-            redirect_to spells_path
+            redirect_to spellbook_spell_path(params[:spellbook_id],@spell)
         else
             render :edit
         end
@@ -60,9 +57,10 @@ class SpellsController < ApplicationController
 
     def destroy
         find_spell
+        find_spellbook
         if authorized_to_edit?
         @spell.destroy
-        redirect_to spells_path
+        redirect_to spellbook_spells_path(params[:spellbook_id],@spell)
         else 
         find_spell 
         end
@@ -81,7 +79,7 @@ class SpellsController < ApplicationController
     end
 
     def find_spellbook
-        @spellbook = Spellbook.find_by_id(params[:id])
+        @spellbook = Spellbook.find_by_id(params[:spellbook_id])
     end
 
     def find_spell

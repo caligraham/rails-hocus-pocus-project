@@ -10,15 +10,17 @@ Title: <%= @spellbook.title %>
 Category: <%= @spellbook.category %>
 Level: <%= @spellbook.level %>
 </p>
-
+<%= link_to "add spell for this spellbook", new_spellbook_spell_path(@spellbook) %>
  <div style="color: #501B1D; text-align:center">
-        <% if current_user.id == @spellbook.user_id %>
-        <%= link_to "edit", edit_spellbook_path(@spellbook) %>
-          <%= link_to "delete", spellbook_path(@spellbook), method: 'DELETE' %>
-          <% end %>
+    
+        <!--<%= link_to "edit", edit_spellbook_path(@spellbook) %>
+          <%= link_to "delete", spellbook_path(@spellbook), method: 'DELETE' %>-->
+  
         </div>
 
 <h5 style="color: #2E1114; text-align:center">All Spells within this Spellbook</h5>
+
+
 
 <h6 style="color: #2E1114; text-align:center"><%= render @spellbook.spells %></h6>
 </div>

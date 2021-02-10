@@ -2,18 +2,9 @@
 <div class="container">
 <h1 style="color: #501B1D; text-align:center">Edit Spell</h1>
 
-<div style="color: #501B1D; text-align:center">
+<%= render partial: "form", locals: { spell: @spell, url: spellbook_spell_path(@spellbook, @spell)} %>
 
-<%= form_for ([@spellbook, @spell]) do |f| %>
-    <%= f.label "Name" %>
-    <%= f.text_field :name %> <br>
-    <%= f.label "Level" %> 
-    <%= f.number_field :level %> <br>
-    <%= f.label "Description" %> 
-    <%= f.text_area :description %> <br>
-  
-    <%= f.submit %>
-<% end %>
+<div style="color: #501B1D; text-align:center">
 </div>
 </div>
 

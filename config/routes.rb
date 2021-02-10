@@ -11,10 +11,9 @@ Rails.application.routes.draw do
   post '/signup', to: 'users#create'
   resources :users
   
-  get '/spells/recent_spells' => 'spells#recent_spells'
+  get '/spellbooks/recent_spellbooks' => 'spellbooks#recent_spellbooks' , as: 'recent_spellbooks'
 
   resources :crystal_balls
-  resources :spells
   resources :spellbooks do
     resources :spells
   end

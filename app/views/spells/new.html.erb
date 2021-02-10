@@ -4,7 +4,7 @@
 <br>
 <div class="container" style="text-align:center">
 <h1 style="color: #501B1D; text-align:center">Create A Spell</h1>
-<%= render partial: "form" %>
+<%= render partial: "form", locals: { spell: @spell, url: spellbook_spells_path(@spellbook)} %>
 </div>
    
     <style>

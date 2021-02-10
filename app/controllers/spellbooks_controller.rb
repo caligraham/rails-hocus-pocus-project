@@ -10,13 +10,16 @@ class SpellbooksController < ApplicationController
         find_spellbook
     end
 
+    def recent_spellbooks
+        @spellbooks = Spellbook.newest_spellbooks
+        render :index
+    end
+
     def new
         @spellbook = Spellbook.new
-        2.times { @spellbook.spells.build }
     end
 
     def create
-        params[:spellbook][:user_id] = current_user.id
         @spellbook = Spellbook.new(spellbook_params)
         if @spellbook.save 
             redirect_to spellbook_path(@spellbook)
@@ -56,7 +59,7 @@ class SpellbooksController < ApplicationController
 
 
     def spellbook_params
-        params.require(:spellbook).permit(:title, :category, :level, :user_id, spells_attributes: [:name, :description, :level, :category,])
+        params.require(:spellbook).permit(:title, :category, :level)
     end
 
     def find_spellbook

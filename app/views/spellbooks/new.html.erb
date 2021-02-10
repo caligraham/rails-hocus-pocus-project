@@ -12,19 +12,10 @@
 
     <%= form_for @spellbook do |f| %>
         <%= render partial: "form", locals: { partial_form: f } %>
-        <h3>And add 2 Spells:</h3>
-        <%= f.fields_for :spells do |s| %>
-        <%= s.label "Name" %><br><br>
-        <%= s.text_field :name %> <br><br>
-        <%= s.label "Level" %> <br><br>
-        <%= s.number_field :level %><br><br>
-        <%= s.label "Description" %> <br><br>
-        <%= s.text_area :description %><br><br>
-        <%= s.hidden_field :user_id, value:current_user.id %>
+        <%= f.submit "Generate your Spellbook" %>
     <% end %>
 
-    <%= f.submit "Generate your Spellbook & Spells" %>
-    <% end %>
+    
     </div>
     </div>
 
