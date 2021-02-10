@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get '/spellbooks/recent_spellbooks' => 'spellbooks#recent_spellbooks' , as: 'recent_spellbooks'
 
   resources :crystal_balls
+  resources :spells
   resources :spellbooks do
     resources :spells
   end

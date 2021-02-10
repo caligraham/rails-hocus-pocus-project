@@ -17,12 +17,6 @@ class SpellsController < ApplicationController
         find_spellbook
     end
 
-    def recent_spells
-        @spells = Spell.newest_spells
-        render :index
-    end
-
-
     def new
         @spellbook = Spellbook.find(params[:spellbook_id])
         @spell = @spellbook.spells.build
@@ -39,7 +33,6 @@ class SpellsController < ApplicationController
         end
     end
 
-
     def edit
         find_spell
         find_spellbook
@@ -49,7 +42,7 @@ class SpellsController < ApplicationController
         find_spell
         @spell.update(spell_params)
         if @spell.valid? 
-            redirect_to spellbook_spell_path(params[:spellbook_id],@spell)
+            redirect_to spell_path(@spell)
         else
             render :edit
         end
@@ -60,7 +53,7 @@ class SpellsController < ApplicationController
         find_spellbook
         if authorized_to_edit?
         @spell.destroy
-        redirect_to spellbook_spells_path(params[:spellbook_id],@spell)
+        redirect_to spellbooks_path
         else 
         find_spell 
         end
@@ -68,7 +61,7 @@ class SpellsController < ApplicationController
     
     private
     def spell_params
-        params.require(:spell).permit(:name, :level, :description, :spellbook_id, spellbook_attributes: [:user_id, :title, :category, :level])
+        params.require(:spell).permit(:name, :level, :description, :spellbook_id, spellbook_attributes: [:id, :user_id, :title, :category, :level])
     end
 
     def redirect_if_not_spellbook_owner

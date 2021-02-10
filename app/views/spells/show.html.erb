@@ -15,8 +15,8 @@
       </div>
         <div style="color: #501B1D; text-align:center">
         <% if current_user.id == @spell.user_id %>
-        <%= link_to "edit", edit_spellbook_spell_path(@spellbook, @spell) %>
-          <%= link_to "delete", spellbook_spell_path(@spellbook, @spell), method: 'DELETE' %>
+        <%= link_to "edit", edit_spell_path(@spell) %>
+          <%= link_to "delete", spell_path(@spell), method: 'DELETE' %>
           <% end %>
         </div>
 </div>

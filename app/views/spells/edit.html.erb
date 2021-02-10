@@ -1,10 +1,10 @@
 
 <div class="container">
 <h1 style="color: #501B1D; text-align:center">Edit Spell</h1>
-
-<%= render partial: "form", locals: { spell: @spell, url: spellbook_spell_path(@spellbook, @spell)} %>
-
 <div style="color: #501B1D; text-align:center">
+<%= render partial: "form", locals: { spell: @spell, url: spell_path(@spell)} %>
+
+
 </div>
 </div>
 

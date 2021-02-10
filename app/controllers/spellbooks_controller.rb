@@ -7,7 +7,8 @@ class SpellbooksController < ApplicationController
     end
 
     def show
-        find_spellbook
+        find_spell
+        find_spellbook   
     end
 
     def recent_spellbooks
@@ -63,7 +64,11 @@ class SpellbooksController < ApplicationController
     end
 
     def find_spellbook
-        @spellbook = Spellbook.find(params[:id])
+        @spellbook = Spellbook.find_by_id(params[:id])
+    end
+
+    def find_spell
+        @spell = Spell.find_by_id(params[:id])
     end
 
 end
