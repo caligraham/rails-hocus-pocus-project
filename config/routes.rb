@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
-  resources :users
+  resources :users, except: [:destroy]
   
   get '/spellbooks/recent_spellbooks' => 'spellbooks#recent_spellbooks' , as: 'recent_spellbooks'
 
@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     resources :spells
   end
 
-  match '*path' => 'application_controller#fallback', via: [:all]
+  match '*path' => 'application_controller#fallback', via: [:all] 
 
   
 
