@@ -13,7 +13,7 @@ class Spell < ApplicationRecord
         Spell.order(created_at: :desc).limit(5)
     end
 
-    def spellbook_attributes=(hash_of_attributes)
+    def spellbook_attributes=(hash_of_attributes) #custom writer
         if !hash_of_attributes[:title].blank? && !hash_of_attributes[:genre].blank? && !hash_of_attributes[:difficulty].blank?
             self.spellbook = Spellbook.find_or_create_by(hash_of_attributes)
         end

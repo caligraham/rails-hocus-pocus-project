@@ -16,6 +16,12 @@ bundle install
 ```
 This will install neccessary gems to run the program.
 
+For database migration please type the following into terminal shell:
+
+```bash
+rails db:migrate
+```
+
 To connect to a local host, please type the following command:
 
 ```bash
