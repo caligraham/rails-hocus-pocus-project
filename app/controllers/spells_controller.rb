@@ -1,8 +1,10 @@
 class SpellsController < ApplicationController
     
     before_action :redirect_if_not_logged_in
-    #before_action :current_user, only: [:edit, :update, :destroy]
-    #before_action :redirect_if_not_spellbook_owner, only: [:destroy, :edit, :update]
+    before_action :find_spell, only: [:show, :edit, :update, :destroy]
+    before_action :find_spellbook, only: [:show, :edit, :destroy]
+
+    #macro to run particular method before the action methods below execute. Useful because we're able to create validations as well as queries to populate a specific instance variable that we may use within that method. Decreases lines of code and keeps stuff dry. 
 
     def index
         if params[:spellbook_id] && @spellbook = Spellbook.find(params[:spellbook_id])
@@ -13,8 +15,6 @@ class SpellsController < ApplicationController
     end
 
     def show
-        find_spell
-        find_spellbook
     end
 
     def new
@@ -34,12 +34,9 @@ class SpellsController < ApplicationController
     end
 
     def edit
-        find_spell
-        find_spellbook
     end
 
     def update
-        find_spell
         @spell.update(spell_params)
         if @spell.valid? 
             redirect_to spell_path(@spell)
@@ -49,8 +46,6 @@ class SpellsController < ApplicationController
     end
 
     def destroy
-        find_spell
-        find_spellbook
         if authorized_to_edit?
         @spell.destroy
         redirect_to spellbooks_path

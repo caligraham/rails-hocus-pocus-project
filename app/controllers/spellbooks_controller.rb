@@ -1,14 +1,14 @@
 class SpellbooksController < ApplicationController
  
     before_action :redirect_if_not_logged_in, :current_user
+    before_action :find_spellbook, only: [:show, :edit, :update, :destroy]
     
     def index
         @spellbooks = Spellbook.all 
     end
 
     def show
-        find_spell
-        find_spellbook   
+        find_spell  
     end
 
     def recent_spellbooks
@@ -31,11 +31,9 @@ class SpellbooksController < ApplicationController
 
 
     def edit
-        find_spellbook
     end
 
     def update
-        find_spellbook
         @spellbook.update(spellbook_params)
         if @spellbook.valid?
             redirect_to spellbooks_path
@@ -45,7 +43,6 @@ class SpellbooksController < ApplicationController
     end
 
     def destroy
-        find_spellbook
         if current_user.id != @spellbook.user_id
             redirect_to spellbooks_path
         else 
